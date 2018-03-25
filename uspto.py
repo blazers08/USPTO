@@ -17,7 +17,6 @@ field1 = browser.find_element_by_name("FIELD1")
 field1.clear
 
 def crawl(str):
-# str = 'International Business Machines'
 	term1.send_keys(str)
 	field1 = browser.find_element_by_xpath("//select[@name=\"FIELD1\"]/option[9]").click()
 	term1.find_element_by_xpath("//input[@value ='Search']").click()
@@ -44,6 +43,7 @@ with open('patent.json', 'w') as f:
 	json.dump(obj, f, ensure_ascii=False, sort_keys=True, indent=4)
 
 if __name__ == "__main__":
+	print("Type the assignee u want to search:")
 	str = str(sys.argv[1])
 	crawl(str)
 
