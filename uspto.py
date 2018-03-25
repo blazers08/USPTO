@@ -43,7 +43,6 @@ with open('patent.json', 'w') as f:
 	json.dump(obj, f, ensure_ascii=False, sort_keys=True, indent=4)
 
 if __name__ == "__main__":
-	print("Type the assignee u want to search:")
 	str = str(sys.argv[1])
 	crawl(str)
 

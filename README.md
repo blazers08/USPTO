@@ -1,1 +1,1 @@
-#執行python3 uspto.py "參數"
+執行python3 uspto.py "參數"
