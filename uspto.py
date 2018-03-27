@@ -17,11 +17,16 @@ term1.clear
 field1 = browser.find_element_by_name("FIELD1")
 field1.clear
 
+obj = {}
+obj['+string+'] = []
+
 def crawl(string):
 	# string = "Bank of America"
 	term1.send_keys(string)
 	field1 = browser.find_element_by_xpath("//select[@name=\"FIELD1\"]/option[9]").click()
 	term1.find_element_by_xpath("//input[@value ='Search']").click()
+
+
 
 # 用頁數翻頁
 soup = BeautifulSoup(browser.page_source, "html.parser")
@@ -33,15 +38,13 @@ soup = BeautifulSoup(browser.page_source, "html.parser")
 # site_url = site + site_page_number + site_rest
 
 def get_ptno():
-	obj = {}
-	obj['patent'] = []
 	for ele in browser.find_elements_by_xpath("/html/body/table/tbody/tr/td[2]/a"):
 		addItem = {'patent number': ele.text}
-		obj['patent'].append(addItem)
+		obj['+string+'].append(addItem)
 		print(ele.text)
 
 def dump_json():
-	with open('patent.json', 'w') as f:
+	with open(''+string+'.json', 'w') as f:
 		json.dump(obj, f, ensure_ascii=False, sort_keys=True, indent=4)
 
 if __name__ == "__main__":
@@ -49,4 +52,3 @@ if __name__ == "__main__":
 	crawl(string)
 	get_ptno()
 	dump_json()
-
