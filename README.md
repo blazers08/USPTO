@@ -1,1 +1,6 @@
-執行python3 uspto.py "參數"
+##Description
+**To crawl USPTO quick search website with selenium**
+**Using *assignee* field to find patents owned by that assignee**
+
+##How to use
+**python3 uspto.py "argument"**
