@@ -23,9 +23,6 @@ def crawl(string):
 	field1 = browser.find_element_by_xpath("//select[@name=\"FIELD1\"]/option[9]").click()
 	term1.find_element_by_xpath("//input[@value ='Search']").click()
 
-obj = {}
-obj['patent'] = []
-
 # 用頁數翻頁
 soup = BeautifulSoup(browser.page_source, "html.parser")
 # data_page = http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p='+page+'&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1='+string+'&FIELD1=AANM&co1=AND&TERM2=&FIELD2=&d=PTXT
@@ -36,6 +33,8 @@ soup = BeautifulSoup(browser.page_source, "html.parser")
 # site_url = site + site_page_number + site_rest
 
 def get_ptno():
+	obj = {}
+	obj['patent'] = []
 	for ele in browser.find_elements_by_xpath("/html/body/table/tbody/tr/td[2]/a"):
 		addItem = {'patent number': ele.text}
 		obj['patent'].append(addItem)
